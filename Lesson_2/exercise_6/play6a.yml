@@ -1,0 +1,11 @@
+---
+- name: Exercise 6a
+  hosts: arista
+  gather_facts: false
+  tasks:
+    - eos_command:
+        commands: show ip arp
+      register: output
+
+    - debug:
+        var: output
