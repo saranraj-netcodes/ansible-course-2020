@@ -1,0 +1,14 @@
+---
+- name: test play
+  hosts: cisco5 
+  gather_facts: False
+  tasks:
+    - name: gather facts
+      ios_facts:
+      register: output
+
+    - name: print
+      debug:
+        #var: output
+        var: ansible_net_version
+

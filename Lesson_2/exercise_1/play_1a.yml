@@ -1,0 +1,15 @@
+---
+- name: Gather Facts
+  hosts: arista5
+  gather_facts: true
+
+  tasks:
+    - name: Print ansible_facts
+      debug:
+        var: ansible_facts
+
+    - name: print IPv4 addresses
+      debug:
+        var: net_all_ipv4_addresses
+
+
