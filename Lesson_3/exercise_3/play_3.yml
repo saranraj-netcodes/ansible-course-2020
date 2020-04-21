@@ -1,0 +1,26 @@
+---
+- name: Exercise 3
+  hosts: cisco1:cisco2
+  gather_facts: false
+  tasks:
+    - ios_command:
+        commands: "show lldp neighbors"
+      register: output
+
+    - set_fact:
+        lldp: "{{ output['stdout_lines'][0] }}"
+    - debug:
+        var: lldp   
+    - set_fact:
+        lldp_entry: "{{ item }}"
+      loop: "{{ lldp }}"
+      when: "'twb-sf-hpsw1' in item"
+    - set_fact:
+        remote_device: "{{ lldp_entry.split()[0] }}"
+        local_intf: "{{ lldp_entry.split()[1] }}"
+        remote_intf: "{{ lldp_entry.split()[4] }}"
+    - debug:
+        msg: 
+          - "Remote Device: {{ remote_device }}"
+          - "Local intf: {{ local_intf }}"
+          - " Remote intf: {{ remote_intf }}"
