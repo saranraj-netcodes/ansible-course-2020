@@ -1,0 +1,14 @@
+---
+- name: Exercise 5
+  hosts: nxos
+  gather_facts: false
+  tasks:
+    - template:
+        src: interfaces.j2
+        dest: "./CFGS/{{ inventory_hostname }}/{{ inventory_hostname }}-intf.txt"
+    - template:
+        src: bgp.j2
+        dest: "./CFGS/{{ inventory_hostname }}/{{ inventory_hostname }}-bgp.txt"
+    - assemble:
+        src: "./CFGS/{{ inventory_hostname }}/"
+        dest: "./CFGS/{{ inventory_hostname }}-config_assemble.txt"

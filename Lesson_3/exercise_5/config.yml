@@ -1,0 +1,8 @@
+---
+- name: Exercise 5
+  hosts: nxos
+  gather_facts: false
+  tasks:
+    - template:
+        src: nxos.j2
+        dest: "./CFGS/{{ inventory_hostname }}.txt"
