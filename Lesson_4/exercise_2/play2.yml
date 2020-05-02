@@ -1,0 +1,12 @@
+---
+- name: Exercise 2
+  hosts: cisco1
+  gather_facts: False 
+  tasks:
+    - name: IOS System
+      ios_system:
+        hostname: "{{ hostname }}"
+        domain_name: "{{ domain_name }}"
+        name_servers:
+          - "{{ DNS_server_1 }}"
+          - "{{ DNS_server_2 }}"
