@@ -1,0 +1,10 @@
+---
+- name: Show Commands
+  hosts: nxos
+  gather_facts: False
+  tasks:
+    - nxos_command:
+        commands: show running-config interface Ethernet1/3
+      register: output
+    - debug:
+        var: output
