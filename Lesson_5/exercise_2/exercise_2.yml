@@ -1,0 +1,35 @@
+---
+- name: Exercise 2
+  hosts: cisco:arista:nxos
+  gather_facts: True
+  tasks:
+    - name: Global Config
+      set_fact:
+        configuration: "{{ lookup('template', 'templates/{{ ansible_network_os }}/global.j2') }}"
+
+    - name: View generated Config
+      debug:
+        var: configuration.splitlines()
+
+    - name: Global Config
+      cli_config:
+        config: "{{ configuration }}"
+
+
+- name: Exercise 2 SRX Config
+  hosts: juniper
+  gather_facts: False
+  tasks:
+    - name: SRX Config
+      set_fact:
+        SRX_Config: "{{ lookup('template', 'templates/{{ ansible_network_os }}/global.j2') }}"
+
+    - name: View SRX Configuration
+      debug: 
+        var: SRX_Config.splitlines()
+
+    - name: SRX Configuration
+      vars:
+        ansible_connection: network_cli
+      cli_config: "{{ SRX_Config }}"      
+
