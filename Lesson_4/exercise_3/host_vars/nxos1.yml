@@ -1,5 +1,0 @@
----
-interface: Ethernet1/4
-ip_address: 10.227.100.1
-net_mask: 24
-peer_ip: 10.227.100.2

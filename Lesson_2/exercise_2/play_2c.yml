@@ -1,9 +1,0 @@
----
-- name: Print bgp_as
-  hosts: cisco
-  gather_facts: false
-
-  tasks:
-    - name: Print BGP AS number for cisco hosts
-      debug: 
-        msg: "The AS for host {{ inventory_hostname }} is {{ bgp_asn }}, the router id is {{ bgp_router_id}}"
