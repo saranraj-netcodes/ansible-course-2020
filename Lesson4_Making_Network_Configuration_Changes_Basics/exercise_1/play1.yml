@@ -1,0 +1,22 @@
+---
+- name: Exercise 1
+  hosts: cisco
+  gather_facts: False
+  tasks:
+    - name: Configure Banner For Cisco
+      ios_banner:
+        banner: login
+        text: |
+          ---------------------------------
+          This is configured for L4 Ex1 2020
+          WARNING: no Unauthorised access
+          ---------------------------------
+        state: present
+      notify: write mem
+
+  handlers: 
+    - name: write mem
+      ios_command:
+        commands: write mem
+      changed_when: True
+

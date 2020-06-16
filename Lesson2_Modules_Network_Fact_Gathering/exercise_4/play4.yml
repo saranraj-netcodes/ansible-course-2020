@@ -1,0 +1,15 @@
+---
+- name: Exercise 4
+  hosts: cisco6
+  gather_facts: False
+  tasks:
+    - name: Clearing Logging Buffer
+      ios_command:
+        commands: 
+          - command: clear logging
+            prompt: confirm
+            answer: "\r"
+      register: Clear_logging_buffer
+    - name: Print Output
+      debug:
+        var: Clear_logging_buffer

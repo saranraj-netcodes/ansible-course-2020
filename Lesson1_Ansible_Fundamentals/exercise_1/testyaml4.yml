@@ -1,0 +1,2 @@
+---
+{rt1: {host: 'switch1', username: 'admin', password: 'adminabc', device: 'cisco-switch', session_log: YES}}

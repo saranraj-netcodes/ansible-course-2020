@@ -1,0 +1,39 @@
+---
+- name: Exercise 5
+  hosts: nxos
+  gather_facts: False
+  tasks:
+    - name: Make it switchport
+      nxos_interfaces:
+        config:
+          - name: "{{ intf_name }}"
+            mode: "{{ intf_mode }}"
+        state: merged
+
+    - name: Configure Tunks
+      nxos_l2_interface:
+        name: "{{ intf_name }}"
+        mode: "{{ switchport_mode }}"
+
+    - name: Configure Native Vlan
+      nxos_l2_interfaces:
+        config:
+          - name: "{{ intf_name }}"
+            trunk:
+              native_vlan: "{{ native_vlan }}"
+        state: merged
+
+    - name: show commands
+      nxos_command:
+        commands: show interface {{ intf_name }} trunk | json
+      register: output
+
+    - set_fact:
+        trunk_dict: "{{ output.stdout[0].TABLE_interface.ROW_interface }}"
+
+    - name: "Verify {{ intf_name }} is trunking and has correct native VLAN"
+      assert:
+        that:
+          - trunk_dict.status == 'trunking'
+          - trunk_dict.native == "{{ native_vlan }}"
+        

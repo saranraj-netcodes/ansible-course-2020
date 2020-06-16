@@ -1,0 +1,15 @@
+---
+network devices:
+  - host: 'switch2'
+    username: 'admin'
+    Password: 'admin123'
+    device_type: 'switch'
+    user_sesion_log: YES
+    ip_address:
+      - 1.1.1.1
+      - 2.2.2.2
+      - 3.3.3.3
+  - host: 'switch3'
+    username: 'admin'
+    Password: 'admin123'
+    device_type: 'switch'
