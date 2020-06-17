@@ -1,0 +1,17 @@
+---
+- name: Generate Reports
+  hosts: cisco:nxos:arista
+  gather_facts: True
+  tasks:
+    - name: Generate Device Specific Report
+      template:
+        src: ./reports/facts.j2
+        dest: ./reports/facts/{{ inventory_hostname }}.md
+
+    - name: Create Master Report
+      assemble:
+        src: ./reports/facts/
+        dest: ./reports/master-report.md
+        delimiter: "---"
+      run_once: true
+

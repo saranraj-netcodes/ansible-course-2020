@@ -1,0 +1,20 @@
+# {{ inventory_hostname }}
+
+Serial Number: {{ ansible_net_serialnum }}
+OS Version: {{ ansible_net_version }}
+
+## Neighbour
+
+| Device | Local Interface | Neighbour | Neighbour Interface |
+|--------|-----------------|-----------|---------------------|
+{% for interface, neighbors in ansible_net_neighbors.items() %}
+{% for neighbor in neighbors %}
+| {{ inventory_hostname }} | {{ interface }} | {{ neighbor.host }} | {{ neighbor.port }} |
+{% endfor %}
+{% endfor %}
+
+## Interface List
+{% for interface in ansible_net_interfaces.keys() %}
+    - {{ interface }}
+{% endfor %}
+

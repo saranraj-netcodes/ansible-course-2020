@@ -1,0 +1,7 @@
+---
+- name: Verify Facts
+  hosts: cisco1
+  gather_facts: true
+  tasks:
+    - debug:
+        var: "ansible_net_version"
