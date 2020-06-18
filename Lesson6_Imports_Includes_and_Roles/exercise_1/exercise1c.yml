@@ -1,0 +1,6 @@
+---
+- name: Exercise 1C
+  hosts: localhost
+  tasks:
+    - include_tasks: subtask2.yml
+      tags: always

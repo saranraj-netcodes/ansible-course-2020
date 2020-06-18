@@ -1,0 +1,10 @@
+---
+- name: exercise_1a
+  hosts: localhost
+  tasks:
+    - include_tasks: subtask1.yml
+      loop:
+        - 10.1.1.1
+        - 10.2.2.2
+        - 10.3.3.3
+        - 10.4.4.4

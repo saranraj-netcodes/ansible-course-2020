@@ -1,0 +1,5 @@
+---
+- name: exercise_2a
+  hosts: localhost
+  tasks:
+    - import_tasks: subtask1.yml

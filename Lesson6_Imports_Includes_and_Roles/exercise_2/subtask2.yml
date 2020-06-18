@@ -1,0 +1,15 @@
+---
+- name: Print Message 1
+  debug:
+    msg: "Test Message for Tag Foo1"
+  tags: Foo1
+
+- name: Print Message 2
+  debug:
+    msg: "Test Message for Tag Foo2"
+  tags: Foo2
+
+- name: Print Message 3
+  debug:
+    msg: "Test Message for Tag Foo3"
+  tags: Foo3 

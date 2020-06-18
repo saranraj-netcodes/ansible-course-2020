@@ -1,0 +1,7 @@
+---
+- name: exercise_2b
+  hosts: localhost
+  vars:
+    my_tasks_alt: subtask1.yml
+  tasks:
+    - import_tasks: "{{ my_tasks_alt }}"

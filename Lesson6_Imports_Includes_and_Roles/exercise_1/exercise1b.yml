@@ -1,0 +1,10 @@
+---
+- name: exercise_1b
+  hosts: localhost
+  tasks:
+    - include_tasks: "{{ my_tasks }}"
+      loop:
+        - 10.1.1.1
+        - 10.2.2.2
+        - 10.3.3.3
+        - 10.4.4.4
