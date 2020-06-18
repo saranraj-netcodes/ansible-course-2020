@@ -1,0 +1,6 @@
+---
+- name: verify ansible facts
+  hosts: cisco
+  tasks:
+    - debug:
+        var: ansible_facts

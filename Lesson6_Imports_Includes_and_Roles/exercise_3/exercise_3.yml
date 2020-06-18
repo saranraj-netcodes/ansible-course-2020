@@ -1,0 +1,11 @@
+---
+- name: General Configuration Cisco
+  hosts: cisco
+  tasks:
+    - name: IOS Config
+      import_tasks: config_ios.yml
+      when: ansible_facts.net_iostype == "IOS"
+
+    - name: IOS XE Config
+      import_tasks: config_ios_xe.yml
+      when: ansible_facts.net_iostype == "IOS-XE"

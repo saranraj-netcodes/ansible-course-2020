@@ -1,0 +1,25 @@
+---
+- name: General Configuration Cisco
+  hosts: cisco:nxos:arista
+  tasks:
+    - name: IOS Config
+      import_tasks: config_ios.yml
+      when: ansible_facts.net_iostype is defined and
+            ansible_facts.net_iostype == "IOS"
+      tags: ios
+
+    - name: IOS XE Config
+      import_tasks: config_ios_xe.yml
+      when: ansible_facts.net_iostype is defined and
+            ansible_facts.net_iostype == "IOS-XE"
+      tags: ios-xe
+
+    - name: EOS Config
+      import_tasks: config_eos.yml
+      when: ansible_network_os == "eos"
+      tags: eos
+
+    - name: NXOS Config
+      import_tasks: config_nxos.yml
+      when: ansible_network_os == "nxos"
+      tags: nxos    
