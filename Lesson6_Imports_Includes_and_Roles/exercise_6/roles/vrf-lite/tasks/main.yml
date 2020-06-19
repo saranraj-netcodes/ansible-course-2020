@@ -1,0 +1,4 @@
+- name: Configure VRF Lite
+  ios_config: 
+    src: vrf_lite.j2
+    backup: yes

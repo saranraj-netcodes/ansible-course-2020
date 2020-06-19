@@ -1,0 +1,14 @@
+- name: IOS Configuration
+  ios_config: 
+    src: ios_config.j2
+  when: ansible_network_os == "ios"
+
+- name: NX-OS Configuration
+  nxos_config:
+    src: nxos_config.j2
+  when: ansible_network_os == "nxos"
+
+- name: EOS Configuration
+  eos_config:
+    src: eos_config.j2
+  when: ansible_network_os == "eos"
