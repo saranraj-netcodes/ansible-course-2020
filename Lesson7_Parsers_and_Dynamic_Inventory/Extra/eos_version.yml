@@ -1,0 +1,14 @@
+---
+- name: Show version
+  hosts: arista5
+  gather_facts: False
+  tasks:
+    - eos_command:
+        commands: "show version | json "
+      register: show_ver
+    - debug:
+        var: show_ver['stdout'][0]
+
+    - name: Print Version
+      debug:
+        msg: "Version: {{ show_ver['stdout'][0].version }}"

@@ -1,0 +1,6 @@
+---
+- hosts: cisco1
+  gather_facts: False
+  tasks:
+    - debug:
+        var: hostvars
