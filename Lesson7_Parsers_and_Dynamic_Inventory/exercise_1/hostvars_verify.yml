@@ -1,0 +1,7 @@
+---
+- name: test hostvar
+  hosts: nxos1
+  gather_facts: False
+  tasks:
+    - debug:
+        var: hostvars['nxos1']
