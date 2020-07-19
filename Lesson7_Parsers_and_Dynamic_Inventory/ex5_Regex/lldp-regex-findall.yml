@@ -1,0 +1,25 @@
+---
+- name: Exercise 5a
+  hosts: nxos
+  gather_facts: False
+  tasks:
+    - name: Execute Command
+      nxos_command:
+        commands: show lldp neighbors
+      register: output
+
+
+    - set_fact:
+        output: "{{ output.stdout[0] }}"
+
+    - name: Print unstructured output
+      debug:
+        var: output.splitlines()
+
+    - name: Extract LLDP columns using regular expressions
+      set_fact: 
+        lldp: "{{ output | regex_findall('^(\\S+)\\s+(Eth\\S+)\\s+\\d+\\s+\\S+\\s+(Ethernet\\S+)', multiline=True) }}"
+
+    - name: Print LLDP fields as list
+      debug:
+        msg: "{{ lldp }}"
