@@ -1,0 +1,21 @@
+---
+- name: Block and Rescue
+  hosts: arista
+  gather_facts: False
+  tasks:
+    - block:
+        - name: Attempt Configuration Using and invalid password
+          vars: 
+            ansible_ssh_pass: "foobar"
+          eos_config: 
+            lines:
+              - "ip name-server {{ dns_server1 }}"
+              - "ip name-server {{ dns_server2 }}"
+      rescue:
+        - name: Try configuration again in rescue-block
+          vars: 
+            ansible_ssh_pass: "{{ lookup('env', 'ANSIBLE_PASSWORD') }}"
+          eos_config:
+            lines:
+              - "ip name-server {{ dns_server1 }}"
+              - "ip name-server {{ dns_server2 }}"
