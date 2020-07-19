@@ -1,0 +1,25 @@
+---
+- name: Exercise 3b
+  hosts: arista
+  gather_facts: False
+  vars:
+    platform: "arista_eos"
+    command: "show vlan"
+    textfsm_rel_path: "ntc-templates/templates"
+
+  tasks:
+    - name: Execute Command
+      eos_command:
+        commands: "{{ command }}"
+      register: output
+
+    - name: "Set home directory as ntc_parse doesn't understand ~"
+      set_fact:
+        textfsm_index: "{{ inventory_dir }}/{{ textfsm_rel_path }}"
+
+    - set_fact:
+        output_parsed: "{{ output.stdout[0] | ntc_parse(command, platform, textfsm_index) }}"
+
+    - debug:
+        var: output_parsed
+
