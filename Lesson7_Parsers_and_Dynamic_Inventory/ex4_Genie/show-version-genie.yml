@@ -1,0 +1,25 @@
+---
+- name: Exercise 4a
+  hosts: nxos
+  gather_facts: False
+  vars:
+    command: show version
+  collections: 
+    - clay584.genie
+
+  tasks: 
+    - name: Execute Command
+      nxos_command:
+        commands: "{{ command }}"
+      register: output
+
+    - debug:
+        var: output
+
+    - name: Convert to structured data
+      set_fact: 
+        output_struct: "{{ output.stdout[0] | clay584.genie.parse_genie(command=command, os=ansible_network_os) }}"
+
+    - name: Display Structured Data
+      debug:
+        msg: "{{ output_struct }}"
