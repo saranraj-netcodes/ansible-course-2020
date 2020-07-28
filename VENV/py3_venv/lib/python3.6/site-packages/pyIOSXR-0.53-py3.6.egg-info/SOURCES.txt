@@ -1,0 +1,14 @@
+MANIFEST.in
+README.md
+requirements.txt
+setup.cfg
+setup.py
+pyIOSXR/__init__.py
+pyIOSXR/exceptions.py
+pyIOSXR/iosxr.py
+pyIOSXR.egg-info/PKG-INFO
+pyIOSXR.egg-info/SOURCES.txt
+pyIOSXR.egg-info/dependency_links.txt
+pyIOSXR.egg-info/requires.txt
+pyIOSXR.egg-info/top_level.txt
+test/test.py

@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: pynxos
+Version: 0.0.5
+Summary: A library for managing Cisco NX-OS devices through NX-API.
+Home-page: https://github.com/networktocode/pynxos/
+Author: Network To Code
+Author-email: ntc@networktocode.com
+License: Apache
+Description: UNKNOWN
+Platform: UNKNOWN

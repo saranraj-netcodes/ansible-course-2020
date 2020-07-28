@@ -1,0 +1,12 @@
+Metadata-Version: 1.1
+Name: pyIOSXR
+Version: 0.53
+Summary: Python API to interact with network devices running IOS-XR
+Home-page: https://github.com/fooelisa/pyiosxr/
+Author: Elisa Jasinska, Mircea Ulinic
+Author-email: elisa@bigwaveit.org, mircea@cloudflare.com
+License: UNKNOWN
+Download-URL: https://github.com/fooelisa/pyiosxr/tarball/0.53
+Description: UNKNOWN
+Keywords: IOS-XR,IOSXR,Cisco,networking
+Platform: UNKNOWN

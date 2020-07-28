@@ -1,0 +1,3 @@
+[console_scripts]
+kleenex = ats.kleenex:main
+

@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: f5-sdk
+Version: 3.0.21
+Summary: F5 Networks Python SDK
+Home-page: https://github.com/F5Networks/f5-common-python
+Author: F5 Networks
+Author-email: f5_common_python@f5.com
+License: Apache License, Version 2.0
+Description: UNKNOWN
+Keywords: F5,sdk,api,icontrol,bigip,api,ltm
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Intended Audience :: System Administrators

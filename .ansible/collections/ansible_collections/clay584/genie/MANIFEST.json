@@ -1,0 +1,36 @@
+{
+ "collection_info": {
+  "namespace": "clay584",
+  "name": "genie",
+  "version": "0.1.9",
+  "authors": [
+   "Clay Curtis <jccurtis@presidio.com>"
+  ],
+  "readme": "README.md",
+  "tags": [
+   "cisco",
+   "genie",
+   "networking",
+   "parse",
+   "pyats"
+  ],
+  "description": "Brings Cisco pyATS/Genie functionality to Ansible",
+  "license": [
+   "GPL-3.0-or-later"
+  ],
+  "license_file": null,
+  "dependencies": {},
+  "repository": "https://github.com/clay584/genie_collection",
+  "documentation": "https://github.com/clay584/genie_collection/blob/master/clay584/genie/README.md",
+  "homepage": "https://github.com/clay584/genie_collection",
+  "issues": "https://github.com/clay584/genie_collection/issues"
+ },
+ "file_manifest_file": {
+  "name": "FILES.json",
+  "ftype": "file",
+  "chksum_type": "sha256",
+  "chksum_sha256": "666808749249f014b1befc6272e5d63d7472a5b89ed40e0300725a5db664b3cb",
+  "format": 1
+ },
+ "format": 1
+}

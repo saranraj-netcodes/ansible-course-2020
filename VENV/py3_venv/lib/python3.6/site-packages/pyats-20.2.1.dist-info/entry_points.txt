@@ -1,0 +1,3 @@
+[console_scripts]
+pyats = pyats.cli.__main__:main
+

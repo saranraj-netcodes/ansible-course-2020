@@ -1,0 +1,6 @@
+[console_scripts]
+easypy = ats.easypy:main
+
+[pyats.cli.commands.run]
+validate = pyats.easypy.commands:RunEasypy
+

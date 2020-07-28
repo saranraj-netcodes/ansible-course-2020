@@ -1,0 +1,3 @@
+[pyats.cli.commands.validate]
+validate = pyats.topology.commands:ValidateTestbedFile
+

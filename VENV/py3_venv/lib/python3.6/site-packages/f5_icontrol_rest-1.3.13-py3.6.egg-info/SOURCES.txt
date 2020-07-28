@@ -1,0 +1,13 @@
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+f5_icontrol_rest.egg-info/PKG-INFO
+f5_icontrol_rest.egg-info/SOURCES.txt
+f5_icontrol_rest.egg-info/dependency_links.txt
+f5_icontrol_rest.egg-info/requires.txt
+f5_icontrol_rest.egg-info/top_level.txt
+icontrol/__init__.py
+icontrol/authtoken.py
+icontrol/exceptions.py
+icontrol/session.py

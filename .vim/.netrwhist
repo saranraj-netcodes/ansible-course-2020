@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/saranraj002/ansible-course-2020/Extra_Works/Report_Generation/reports/facts'
+let g:netrw_dirhist_2='/home/saranraj002/ansible-course-2020/Extra_Works/Report_Generation/reports'
+let g:netrw_dirhist_3='/home/saranraj002/ansible-course-2020/Extra_Works/Report_Generation'
+let g:netrw_dirhist_4='/home/saranraj002/ansible-course-2020/Extra_Works/Report_Generation/reports/facts'

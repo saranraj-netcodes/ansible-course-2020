@@ -1,0 +1,2 @@
+ansible_galaxy
+ansible_galaxy_cli

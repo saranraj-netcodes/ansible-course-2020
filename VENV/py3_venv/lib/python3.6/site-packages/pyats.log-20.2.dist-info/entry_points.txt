@@ -1,0 +1,3 @@
+[pyats.cli.commands]
+logs = pyats.log.commands.logs:LogsCommand
+

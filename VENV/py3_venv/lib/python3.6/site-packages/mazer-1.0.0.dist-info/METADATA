@@ -1,0 +1,279 @@
+Metadata-Version: 2.1
+Name: mazer
+Version: 1.0.0
+Summary: Ansible content manager
+Home-page: https://github.com/ansible/galaxy-cli
+Author: Red Hat, Inc.
+Author-email: info@ansible.com
+License: GPLv3
+Keywords: mazer
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Description-Content-Type: text/x-rst
+Requires-Dist: six
+Requires-Dist: PyYaml
+Requires-Dist: jinja2
+Requires-Dist: semantic-version
+Requires-Dist: yamlloader
+Requires-Dist: requests
+Requires-Dist: attrs (>=18.1.0)
+
+
+=====
+Mazer
+=====
+
+Ansible content manager
+
+A new command-line tool for managing `Ansible <https://github.com/ansible/ansible>`__ content.
+
+Expect breaking changes!
+------------------------
+
+Mazer is experimental, and currently only available for tech-preview. Use with lots of caution! It is not intended for use in
+production environments, nor is it currently intended to replace the `ansible-galaxy` command-line tool.
+
+If you're installing Ansible content in a production environment, or need assistance with Ansible, please visit the `Ansible Project <https://github.com/ansible/ansible>`__,
+or the `Ansible docs site <https://docs.ansible.com>`__.
+
+Docs
+----
+
+For additional documentation on mazer, view the `Mazer topic on Ansible Galaxy Docs <https://galaxy.ansible.com/docs/mazer/index.html>`__.
+Also see the more `detailed README at github <https://github.com/ansible/mazer/blob/devel/README.md>`__.
+
+Examples
+--------
+
+Installing roles
+````````````````
+
+To install `geerlingguy.nginx <https://galaxy.ansible.com/geerlingguy/nginx/>`__ via galaxy::
+
+    $ mazer install geerlingguy.nginx
+
+See `mazer github repo <https://github.com/ansible/mazer>`__ for more examples.
+
+Installing Mazer
+----------------
+
+From source
+```````````
+
+The source code for mazer lives at `https://github.com/ansible/mazer <https://github.com/ansible/mazer>`__
+
+    $ git clone https://github.com/ansible/mazer.git
+    $ cd mazer
+    $ python setup.py install
+
+Or install the requirements via pip::
+
+    $ pip install -r requirements.txt
+
+Via pip (from git)
+``````````````````
+
+    pip install -v git+ssh://git@github.com/ansible/mazer.git
+
+Testing
+-------
+
+unit testing
+````````````
+
+mazer uses pytest for unit tests.
+
+test requirements
+~~~~~~~~~~~~~~~~~
+
+To install test requirements, use pip to install the requirements in requirements_test.txt::
+
+    pip install -r requirements_test.txt
+
+To run unit tests via `tox` for default platforms (python 2.6, 2.7, 3.6)::
+
+    $ tox
+
+via 'pytest' directly::
+
+    $ pytest tests/
+
+Prerequisites
+-------------
+
+When installing content from an Ansible Galaxy server, requires Galaxy v3.0+.
+
+Roadmap
+-------
+
+To see what we're working on, and where we're headed, `view the roadmap <https://github.com/ansible/mazer/ROADMAP.md>`__.
+
+Getting help
+------------
+
+Issues welcome! If you find a bug, or have a feature idea, please let us know by `opening an issue <https://github.com/ansible/mazer/issues>`__.
+
+You can also reach out to us on irc.freenode.net in the #ansible-galaxy channel.
+
+Origin of "Mazer"
+-----------------
+
+The name Mazer comes from a character from Ender's Game, Mazer Rackham, that Wikipedia describes as "the half-Māori captain who singlehandedly stopped the Second Invasion by realizing that the Buggers are a hive mind. Due to his inability to pass on his knowledge, he was forced to spend fifty years at relativistic speeds (eight years to Rackham) so that he could train the next commander — Ender Wiggin."
+
+A mazer is also a hardwood drinking vessel.
+
+License
+-------
+
+`GNU General Public License v3.0 <https://github.com/ansible/mazer/LICENSE>`__
+
+
+=========
+Changelog
+=========
+
+1.0.0 (2019-05-30)
+------------------
+
+* Point to galaxy.ansible.com instead of galaxy-qa.ansible.com in docs.
+
+0.6.0 (2019-05-30)
+------------------
+
+* Add 'request-id' and user-agent to artifact download requests.
+* Fix 'mazer install /path/to/namespace-name-1.2.3.tar.gz'
+* 'list' now supports --lockfile, --frozen, and --full output formats.
+  --lockfile/--frozen are for creating lockfiles. --full is used in combo
+  with --content to see installed collections fully qualified names.
+* SPDX data updated to 3.5-32-g5b1f683
+* `196 Improve 'list' output and add --full <https://github.com/ansible/mazer/issues/196>`_.
+* `173 Add lockfile support  <https://github.com/ansible/mazer/issues/173>`_.
+* `266 Fix 'install --force' <https://github.com/ansible/mazer/issues/266>`_.
+* `256 Fix --force failing to install anything <https://github.com/ansible/mazer/issues/256>`_.
+* `245 Show warning when user installs deprecated collection <https://github.com/ansible/mazer/issues/245>`_.
+* `249 Add 'api_key' to config  <https://github.com/ansible/mazer/issues/249>`_.
+* `267 Set default log level to info, improve logs <https://github.com/ansible/mazer/issues/267>`_.
+* `251 Help blurb updates <https://github.com/ansible/mazer/issues/251>`_.
+* `255 Fix errors with conflicting collection deps <https://github.com/ansible/mazer/issues/255>`_.
+
+0.5.0 (2019-04-15)
+------------------
+
+* WARNING: Mazer now requires a Ansible Galaxy server that provides the 'v2' style REST API.
+  At time of release, that includes galaxy-dev.ansible.com and galaxy-qa.ansible.com
+* WARNING: Support for directly installing 'traditional' style roles from Ansible Galaxy
+  is no longer supported. ie, 'mazer install geerlingguy.ntp' will no longer work.
+  However, roles can still be installed if they are included in a collection
+* WARNING: The config file items and cli options for specifying install paths
+           have changed and may break existing configs and scripts.
+* The cli option '--content-root' is now '--collections-path'
+* The short cli option '-C' is now shorthand for '--collections-path' instead
+  of '--content-root'
+* The config item 'content_root' has been replaced with 'collections_path'
+* The config item 'global_content_root' has been replaced with 'global_collections_path'
+* The new 'collections_path' value no longer needs to end with 'ansible_collections'
+* The new 'global_collections_path' value no longer needs to end with 'ansible_collections'
+* The new 'collections_path' defaults to '~/.ansible/collections'.
+  Note that this replaces the previous 'content_root' config item that
+  defaulted to '~/.ansible/collections/ansible_collections'
+* The new 'global_collections_path' defaults to '/usr/share/ansible/collections'.
+  Note that this replaces the previous 'global_content_root' config item that
+  defaulted to '/usr/share/ansible/collections/ansible_collections'
+* 'mazer install' with default 'collections_path' ('~/.ansible/collections') will
+  still install to '~/.ansible/collections/ansible_collections', but install
+  will add the require trailing 'ansible_collections' automatically.
+* 'mazer install --global' with default 'globale_collections_path'
+  ('/usr/share/ansible/collections') will still install to
+  '/usr/share/ansible/collections/ansible_collections', but
+  'install --global' will add the require trailing
+  'ansible_collections' automatically.
+* The REST API client now uses 'requests' python module instead of the 'url' module bundle from ansible.
+* Add cli '--config' option to specify a path to an alternative config file.
+* Add support for 'MAZER_HOME' environment variable. MAZER_HOME defaults to ~/.ansible and
+  specifies where mazer looks for it's config (mazer.yml and mazer-logging.yml)
+* `216 Use Galaxy REST API v2 <https://github.com/ansible/mazer/issues/216>`_.
+* `239 Rename content-root to collections-path to be consistent with ansible <https://github.com/ansible/mazer/issues/239>`_.
+* `228 For envs w/no LANG/locale/text encoding, assume utf8 <https://github.com/ansible/mazer/issues/228>`_.
+* `236 Partial fix for scm_url installs <https://github.com/ansible/mazer/issues/236>`_.
+
+
+0.4.0 (2019-03-28)
+------------------
+
+* The default path for collections to be installed
+  is now '~/.ansible/collections/ansible_collections'
+  which is also the default place ansible 2.8 or higher will search
+  for collections.
+* Add the 'mazer publish' for publishing a collection artifact to Ansible Galaxy
+* `186 Implement 'migrate_role' command to convert traditional roles to collections <https://github.com/ansible/mazer/issues/186>`_.
+* galaxy.yml 'authors' field is now a list
+* galaxy.yml 'dependencies' field is now a dict where the key is the
+  collection and the value is a https://github.com/rbarrois/python-semanticversion version spec
+* galaxy.yml 'tags' field (a list of tags) added
+* galaxy.yml 'readme' field added. The value is the path to the README file.
+* galaxy.yml optional new fields 'repository', 'documentation', 'homepage', 'issues'
+* galaxy.yml optional field 'license_file' added. It's value is a path
+  to a file containing additional license information
+* collection artifacts file manifest info is now in the generated FILES.json
+* MANIFEST.json now includes path and sha256sum of new generated FILES.json
+* Dependency solving version matching now supports the python-semanticversion style version specs
+* Fixes and improvements for install of local collection artifacts.
+  ie. `mazer install my_namespace-my_collection-1.2.3.tar.gz`
+* Updates to the use Galaxy REST v2 API
+* Updates to how SPDX data is loaded and used.
+* SPDX data updated to 3.4-59-ga68ef3c
+
+0.3.0 (2018-11-06)
+------------------
+
+* `155 Implement install of things with dep solving (for trad roles and collections) <https://github.com/ansible/mazer/issues/155>`_.
+* `142 Add support for init of a collection, and make it the default <https://github.com/ansible/mazer/pull/142>`_.
+* `139 Add 'editable' installs via 'install -e' (ala, 'python setup.py develop') <https://github.com/ansible/mazer/issues/139>`_.
+* `138 Install role requirements <https://github.com/ansible/mazer/issues/138>`_.
+* `136 Support global content install option <https://github.com/ansible/pull/136>`_.
+* `135 For multi-content archive, install all content <https://github.com/ansible/mazer/pull/135>`_.
+* `133 Add MAZER_CONFIG environment var for specifying config file location <https://github.com/ansible/mazer/pull/133>`_.
+* `116 Add a 'mazer build' command to build collection artifacts <https://github.com/ansible/mazer/issues/116>`_.
+* `151 Fix install of sdx_licenses.json <https://github.com/ansible/mazer/issues/151>`_.
+* `132 Fix log directory creation before initializing logger. Support multiple locations for mazer.yml config <https://github.com/ansible/mazer/pull/132>`_.
+* `127 Refactor ansible_galaxy.flat_rest_api.content <https://github.com/ansible/mazer/issues/127>`_.
+* `126 Finish replacing core data objects with 'attrs' based classes <https://github.com/ansible/mazer/issues/126>`_.
+* `124 Fix unneeded --roles-path option for init and install commands by removing it <https://github.com/ansible/mazer/pull/124>`_.
+* `119 Fix "'mazer list' on multi-content repos looks for install_info in the wrong places" <https://github.com/ansible/mazer/issues/119>`_.
+
+0.2.1 (2018-08-08)
+------------------
+
+* Add 'attrs' dep to setup.py. Update requirements.txt
+  to use setup.py requires.
+* Add the default logging config to Manifest.in so
+  logging is setup correctly on pip install.
+  Fixes https://github.com/ansible/mazer/issues/114
+* Fix install if a role name is substring of another role.
+  Fixes https://github.com/ansible/mazer/issues/112
+* Create and send a X-Request-ID on http requests.
+
+0.2.0 (2018-07-26)
+------------------
+
+* Support new
+  ~/.ansible/content/namespace/reponame/content_type/content_name layout
+* Create install receipts (.galaxy_install_info) on
+  install of repos and roles.
+* 'list' and 'info' commands updated.
+* Now requires and uses 'attrs' python module >=18.1.0
+
+0.1.0 (2018-04-18)
+------------------
+
+* First release on PyPI.
+
+

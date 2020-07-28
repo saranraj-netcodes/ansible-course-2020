@@ -1,0 +1,9 @@
+textfsm
+terminal
+
+[dev]
+pytest
+PyYAML
+black
+yamllint
+ruamel.yaml
