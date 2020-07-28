@@ -1,0 +1,19 @@
+---
+- hosts: cisco:juniper:nxos:arista
+  gather_facts: True
+  tasks:
+    - ios_config:
+        backup: yes
+      when: 'ansible_network_os == "ios"'
+    
+    - eos_config:
+        backup: yes
+      when: 'ansible_network_os == "eos"'
+
+    - nxos_config:
+        backup: yes
+      when: 'ansible_network_os == "nxos"'
+
+    - junos_config:
+        backup: yes
+      when: 'ansible_network_os == "junos"'
